@@ -77,12 +77,6 @@ int print_non_printable(va_list types, char buffer[],
 /* Funcion to print memory address */
 int print_pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_char(va_list types, char buffer[],
-        int flags, int width, int precision, int size);
-int print_string(va_list types, char buffer[],
-        int flags, int width, int precision, int size);
-int print_percent(va_list types, char buffer[],
-        int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
 int get_flags(const char *format, int *i);

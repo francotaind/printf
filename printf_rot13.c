@@ -1,36 +1,51 @@
 #include "main.h"
 /**
- * printf_rot13 - prints string to ROT13 place into buffer
- * @args: type struct va_arg where is allocated printf arguments
- * Return: counter
+ * printf_rot13 - prints string to rot13
+ * @types: lists of arguments
+ * @buffer: buffer array to handle print
+ * @flags: claculates active flags
+ * @size: size specifier
+ * @width: get width
+ * @precision: precision specification
+ * Return: number of chars printed
  */
-int printf_rot13(va_list args)
+int printf_rot13(va_list args, char[],
+		int size, int flags, int precision, int width)
 {
-	int i, j, counter = 0;
-	int k = 0;
-	char *s = va_arg(args, char*);
-	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
-	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
+	char x;
+	char *str;
+	unsigned int i, j;
+	int count = 0;
+	char in[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char out[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
-	if (s == NULL)
-		s = "(null)";
-	for (i = 0; s[i]; i++)
+	str = va_arg(types, char *);
+	UNUSED(buffer);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(flags);
+	UNUSED(size);
+
+	if (str == NULL)
+		str = "(AHYY)";
+	for (i = 0; str[i]; i++)
 	{
-		k = 0;
-		for (j = 0; alpha[j] && !k; j++)
+		for (j = 0; in[j]; j++)
 		{
-			if (s[i] == alpha[j])
+			if (in[j] == str[i])
 			{
-				_putchar(beta[j]);
-				counter++;
-				k = 1;
+				x = out[j];
+				write(1, &x, 1);
+				count++;
+				break;
 			}
 		}
-		if (!k)
+		if (!in[j])
 		{
-			_putchar(s[i]);
-			counter++;
+			x = str[i];
+			write(1, &x, 1);
+			count++;
 		}
 	}
-	return (counter);
+	return (count);
 }

@@ -40,7 +40,8 @@ int printf_oct(va_list val);
 int printf_unsigned(va_list args);
 int printf_binary(va_list val);
 int printf_srev(va_list args);
-int printf_rot13(va_list args);
+int printf_rot13(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
 int printf_int(va_list args);
 int printf_dec(va_list args);
 int _strlen(char *s);
@@ -49,7 +50,8 @@ int _strlenc(const char *s);
 int rev_string(char *s);
 int _strlenc(const char *s);
 int printf_37(void);
-int printf_char(va_list val);
+int printf_char(va_list types, char buffer[],
+	int size, int width, int flags, int precision);
 int printf_string(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);

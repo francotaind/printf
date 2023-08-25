@@ -1,7 +1,8 @@
 #include "main.h"
+
 /**
- * _printf - is a function that prints out correct format
- * @format: identifier
+ * _printf - produces output according to format
+ * @format: character string
  * Return: string length
  */
 int _printf(const char * const format, ...)
